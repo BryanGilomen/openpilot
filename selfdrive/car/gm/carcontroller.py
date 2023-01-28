@@ -76,7 +76,6 @@ class CarController:
     # openpilot can subtly drift, so this is activated throughout a drive to stay synced
     out_of_sync = self.lka_steering_cmd_counter % 4 != (CS.camera_lka_steering_cmd_counter + 1) % 4
     sync_steer = (init_lka_counter or out_of_sync) and self.CP.networkLocation == NetworkLocation.fwdCamera and self.CP.carFingerprint not in CC_ONLY_CAR
-
     steer_step = self.params.INACTIVE_STEER_STEP
     if CC.latActive or sync_steer:
       steer_step = self.params.STEER_STEP
